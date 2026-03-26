@@ -4,10 +4,10 @@
                     xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs"
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Themes/Dialogs/BaseMetroDialog.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Themes/Dialogs/BaseMetroDialog.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="MahApps.Templates.LoginDialog" TargetType="{x:Type dialogs:LoginDialog}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.LoginDialog" TargetType="{x:Type dialogs:LoginDialog}">
         <Grid Background="{TemplateBinding Background}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -112,12 +112,12 @@
                                 Margin="0 0 5 0"
                                 Content="{TemplateBinding AffirmativeButtonText}"
                                 FontSize="{TemplateBinding DialogButtonFontSize}"
-                                Style="{DynamicResource MahApps.Styles.Button.Dialogs.Accent}" />
+                                Style="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.Accent}" />
                         <Button x:Name="PART_NegativeButton"
                                 Margin="5 0 5 0"
                                 Content="{TemplateBinding NegativeButtonText}"
                                 FontSize="{TemplateBinding DialogButtonFontSize}"
-                                Style="{DynamicResource MahApps.Styles.Button.Dialogs}"
+                                Style="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs}"
                                 Visibility="{TemplateBinding NegativeButtonButtonVisibility}" />
                     </StackPanel>
                 </Grid>
@@ -131,13 +131,13 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="EnablePasswordPreview" Value="True">
-                <Setter TargetName="PART_PasswordBox" Property="Style" Value="{DynamicResource MahApps.Styles.PasswordBox.Win8}" />
+                <Setter TargetName="PART_PasswordBox" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.PasswordBox.Win8}" />
             </Trigger>
 
             <Trigger Property="ColorScheme" Value="Accented">
-                <Setter TargetName="PART_NegativeButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.AccentHighlight}" />
-                <Setter TargetName="PART_PasswordBox" Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
-                <Setter TargetName="PART_TextBox" Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
+                <Setter TargetName="PART_NegativeButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.AccentHighlight}" />
+                <Setter TargetName="PART_PasswordBox" Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeForeground}" />
+                <Setter TargetName="PART_TextBox" Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeForeground}" />
             </Trigger>
 
             <Trigger Property="Title" Value="{x:Null}">
@@ -145,15 +145,15 @@
             </Trigger>
             <EventTrigger RoutedEvent="Loaded">
                 <EventTrigger.Actions>
-                    <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.Dialogs.Show}" />
+                    <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.Dialogs.Show}" />
                 </EventTrigger.Actions>
             </EventTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="MahApps.Styles.LoginDialog"
-           BasedOn="{StaticResource MahApps.Styles.BaseMetroDialog}"
+    <Style x:Key="DevTools.MahApps.Styles.LoginDialog"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.BaseMetroDialog}"
            TargetType="{x:Type dialogs:LoginDialog}">
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.LoginDialog}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.LoginDialog}" />
     </Style>
 </ResourceDictionary>

@@ -5,20 +5,20 @@
                     xmlns:mahConverters="clr-namespace:MahApps.Metro.Converters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.TextBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.ComboBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.ListBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.Buttons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.Buttons.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
     <!--#region DataTemplates-->
 
-    <DataTemplate x:Key="MahApps.DataTemplates.MultiSelectionComboBox.DisabledPopupOverlay">
+    <DataTemplate x:Key="DevTools.MahApps.DataTemplates.MultiSelectionComboBox.DisabledPopupOverlay">
         <Border>
             <Border.Background>
-                <SolidColorBrush Opacity="0.5" Color="{DynamicResource MahApps.Colors.ThemeForeground}" />
+                <SolidColorBrush Opacity="0.5" Color="{DynamicResource DevTools.MahApps.Colors.ThemeForeground}" />
             </Border.Background>
             <DockPanel LastChildFill="True">
                 <Button VerticalAlignment="Bottom"
@@ -27,7 +27,7 @@
                         DockPanel.Dock="Bottom" />
                 <Path Margin="50"
                       Data="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,0,1-8-8A7.92,7.92,0,0,1,5.69,7.1L16.9,18.31A7.92,7.92,0,0,1,12,20Zm6.31-3.1L7.1,5.69A7.92,7.92,0,0,1,12,4a8,8,0,0,1,8,8A7.92,7.92,0,0,1,18.31,16.9Z"
-                      Fill="{DynamicResource MahApps.Brushes.Gray}"
+                      Fill="{DynamicResource DevTools.MahApps.Brushes.Gray}"
                       Stretch="Uniform" />
             </DockPanel>
         </Border>
@@ -37,12 +37,12 @@
 
     <!--#region ItemContainerStyles-->
 
-    <Style x:Key="MahApps.Styles.MultiSelectionComboBoxItem"
-           BasedOn="{StaticResource MahApps.Styles.ListBoxItem}"
+    <Style x:Key="DevTools.MahApps.Styles.MultiSelectionComboBoxItem"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.ListBoxItem}"
            TargetType="ListBoxItem" />
 
-    <Style x:Key="MahApps.Styles.MultiSelectionComboBoxItem.CheckBox"
-           BasedOn="{StaticResource MahApps.Styles.MultiSelectionComboBoxItem}"
+    <Style x:Key="DevTools.MahApps.Styles.MultiSelectionComboBoxItem.CheckBox"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.MultiSelectionComboBoxItem}"
            TargetType="ListBoxItem">
         <Setter Property="Template">
             <Setter.Value>
@@ -74,7 +74,7 @@
                                       ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                       IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=IsSelected, Mode=TwoWay}"
                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                      Style="{DynamicResource MahApps.Styles.CheckBox.MultiSelectionComboBoxItem}" />
+                                      Style="{DynamicResource DevTools.MahApps.Styles.CheckBox.MultiSelectionComboBoxItem}" />
                         </mah:ClipBorder>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -134,8 +134,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MahApps.Styles.MultiSelectionComboBoxSelectedItem" TargetType="ListBoxItem">
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray8}" />
+    <Style x:Key="DevTools.MahApps.Styles.MultiSelectionComboBoxSelectedItem" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.Gray8}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Margin" Value="0 0 2 0" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -166,8 +166,8 @@
         <Setter Property="mah:ControlsHelper.CornerRadius" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={mahConverters:SizeToCornerRadiusConverter}}" />
     </Style>
 
-    <Style x:Key="MahApps.Styles.Button.MultiSelectionComboBoxSelectedItem.RemoveItem"
-           BasedOn="{StaticResource MahApps.Styles.Button.Chromeless}"
+    <Style x:Key="DevTools.MahApps.Styles.Button.MultiSelectionComboBoxSelectedItem.RemoveItem"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.Button.Chromeless}"
            TargetType="Button">
         <Setter Property="ContentTemplate">
             <Setter.Value>
@@ -187,16 +187,16 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Accent2}" />
+                <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Accent2}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Highlight}" />
+                <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Highlight}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MahApps.Styles.MultiSelectionComboBoxSelectedItem.Removable"
-           BasedOn="{StaticResource MahApps.Styles.MultiSelectionComboBoxSelectedItem}"
+    <Style x:Key="DevTools.MahApps.Styles.MultiSelectionComboBoxSelectedItem.Removable"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.MultiSelectionComboBoxSelectedItem}"
            TargetType="ListBoxItem">
         <Setter Property="Template">
             <Setter.Value>
@@ -215,7 +215,7 @@
                                     Command="mah:MultiSelectionComboBox.RemoveItemCommand"
                                     CommandParameter="{Binding}"
                                     DockPanel.Dock="Right"
-                                    Style="{DynamicResource MahApps.Styles.Button.MultiSelectionComboBoxSelectedItem.RemoveItem}" />
+                                    Style="{DynamicResource DevTools.MahApps.Styles.Button.MultiSelectionComboBoxSelectedItem.RemoveItem}" />
                             <ContentPresenter Margin="{TemplateBinding Padding}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -229,23 +229,23 @@
 
     <!--#endregion-->
 
-    <Style x:Key="MahApps.Styles.TextBox.MultiSelectionComboBox.Editable"
-           BasedOn="{StaticResource MahApps.Styles.TextBox.ComboBox.Editable}"
+    <Style x:Key="DevTools.MahApps.Styles.TextBox.MultiSelectionComboBox.Editable"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.TextBox.ComboBox.Editable}"
            TargetType="{x:Type TextBox}" />
 
-    <Style x:Key="MahApps.Styles.ToggleButton.MultiSelectionComboBox.DropDown"
-           BasedOn="{StaticResource MahApps.Styles.ToggleButton.ComboBoxDropDown}"
+    <Style x:Key="DevTools.MahApps.Styles.ToggleButton.MultiSelectionComboBox.DropDown"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.ToggleButton.ComboBoxDropDown}"
            TargetType="{x:Type ToggleButton}" />
 
-    <Style x:Key="MahApps.Styles.MultiSelectionComboBox"
-           BasedOn="{StaticResource MahApps.Styles.ComboBox}"
+    <Style x:Key="DevTools.MahApps.Styles.MultiSelectionComboBox"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.ComboBox}"
            TargetType="{x:Type mah:MultiSelectionComboBox}">
-        <Setter Property="DisabledPopupOverlayContentTemplate" Value="{DynamicResource MahApps.DataTemplates.MultiSelectionComboBox.DisabledPopupOverlay}" />
+        <Setter Property="DisabledPopupOverlayContentTemplate" Value="{DynamicResource DevTools.MahApps.DataTemplates.MultiSelectionComboBox.DisabledPopupOverlay}" />
         <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="ItemContainerStyle" Value="{DynamicResource MahApps.Styles.MultiSelectionComboBoxItem}" />
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource DevTools.MahApps.Styles.MultiSelectionComboBoxItem}" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
         <Setter Property="SelectItemsFromTextInputDelay" Value="-1" />
-        <Setter Property="SelectedItemContainerStyle" Value="{DynamicResource MahApps.Styles.MultiSelectionComboBoxSelectedItem}" />
+        <Setter Property="SelectedItemContainerStyle" Value="{DynamicResource DevTools.MahApps.Styles.MultiSelectionComboBoxSelectedItem}" />
         <Setter Property="SelectedItemsPanelTemplate">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -298,7 +298,7 @@
                                           IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                           KeyboardNavigation.IsTabStop="False"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          Style="{DynamicResource MahApps.Styles.ToggleButton.MultiSelectionComboBox.DropDown}" />
+                                          Style="{DynamicResource DevTools.MahApps.Styles.ToggleButton.MultiSelectionComboBox.DropDown}" />
 
                             <Grid x:Name="ContentSite"
                                   Grid.Row="1"
@@ -356,7 +356,7 @@
                                      ScrollViewer.HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
                                      ScrollViewer.VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                     Style="{DynamicResource MahApps.Styles.TextBox.MultiSelectionComboBox.Editable}"
+                                     Style="{DynamicResource DevTools.MahApps.Styles.TextBox.MultiSelectionComboBox.Editable}"
                                      TextWrapping="{TemplateBinding TextWrapping}"
                                      Visibility="Collapsed" />
                             <!--  Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text}"  -->
@@ -369,7 +369,7 @@
                                        HorizontalAlignment="Stretch"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                        Foreground="{TemplateBinding Foreground}"
-                                       Style="{DynamicResource MahApps.Styles.TextBlock.Watermark}"
+                                       Style="{DynamicResource DevTools.MahApps.Styles.TextBlock.Watermark}"
                                        Text="{TemplateBinding mah:TextBoxHelper.Watermark}"
                                        TextAlignment="{TemplateBinding mah:TextBoxHelper.WatermarkAlignment}"
                                        TextTrimming="{TemplateBinding mah:TextBoxHelper.WatermarkTrimming}"
@@ -379,7 +379,7 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Margin="4 0"
-                                            Style="{DynamicResource MahApps.Styles.ContentControl.FloatingMessageContainer}">
+                                            Style="{DynamicResource DevTools.MahApps.Styles.ContentControl.FloatingMessageContainer}">
                                 <ContentControl.Height>
                                     <MultiBinding Converter="{mahConverters:MathMultiplyConverter}" FallbackValue="0">
                                         <Binding ElementName="PART_FloatingMessage"
@@ -394,7 +394,7 @@
                                            HorizontalAlignment="Stretch"
                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                            Foreground="{TemplateBinding Foreground}"
-                                           Style="{DynamicResource MahApps.Styles.TextBlock.AutoCollapsing}"
+                                           Style="{DynamicResource DevTools.MahApps.Styles.TextBlock.AutoCollapsing}"
                                            Text="{TemplateBinding mah:TextBoxHelper.Watermark}"
                                            TextAlignment="{TemplateBinding mah:TextBoxHelper.WatermarkAlignment}"
                                            TextTrimming="{TemplateBinding mah:TextBoxHelper.WatermarkTrimming}">
@@ -418,8 +418,8 @@
 
                         <Border x:Name="DisabledVisualElement"
                                 Grid.ColumnSpan="3"
-                                Background="{DynamicResource MahApps.Brushes.Control.Disabled}"
-                                BorderBrush="{DynamicResource MahApps.Brushes.Control.Disabled}"
+                                Background="{DynamicResource DevTools.MahApps.Brushes.Control.Disabled}"
+                                BorderBrush="{DynamicResource DevTools.MahApps.Brushes.Control.Disabled}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding mah:ControlsHelper.CornerRadius}"
                                 IsHitTestVisible="False"
@@ -439,8 +439,8 @@
                                 <mah:ClipBorder x:Name="PopupBorder"
                                                 Height="Auto"
                                                 HorizontalAlignment="Stretch"
-                                                Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
-                                                BorderBrush="{DynamicResource MahApps.Brushes.ComboBox.PopupBorder}"
+                                                Background="{DynamicResource DevTools.MahApps.Brushes.ThemeBackground}"
+                                                BorderBrush="{DynamicResource DevTools.MahApps.Brushes.ComboBox.PopupBorder}"
                                                 BorderThickness="{DynamicResource ComboBoxPopupBorderThemeThickness}"
                                                 CornerRadius="{DynamicResource ComboBoxPopupBorderThemeCornerRadius}"
                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
@@ -538,10 +538,10 @@
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsEditable}" Value="False" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.EnterActions>
-                                <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.EnterGotFocus}" />
+                                <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.EnterGotFocus}" />
                             </MultiDataTrigger.EnterActions>
                             <MultiDataTrigger.ExitActions>
-                                <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.ExitGotFocus}" />
+                                <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.ExitGotFocus}" />
                             </MultiDataTrigger.ExitActions>
                         </MultiDataTrigger>
 
@@ -551,10 +551,10 @@
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsEditable}" Value="False" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.EnterActions>
-                                <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.EnterHasText}" />
+                                <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.EnterHasText}" />
                             </MultiDataTrigger.EnterActions>
                             <MultiDataTrigger.ExitActions>
-                                <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.ExitHasText}" />
+                                <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.ExitHasText}" />
                             </MultiDataTrigger.ExitActions>
                         </MultiDataTrigger>
 
@@ -567,10 +567,10 @@
                                 <Condition Binding="{Binding Path=(mah:TextBoxHelper.Watermark), RelativeSource={RelativeSource Self}, Converter={x:Static mahConverters:StringIsNullOrEmptyConverter.Default}}" Value="False" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.EnterActions>
-                                <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.ShowFloatingMessage}" />
+                                <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.ShowFloatingMessage}" />
                             </MultiDataTrigger.EnterActions>
                             <MultiDataTrigger.ExitActions>
-                                <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.HideFloatingMessage}" />
+                                <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.HideFloatingMessage}" />
                             </MultiDataTrigger.ExitActions>
                         </MultiDataTrigger>
 
@@ -597,7 +597,7 @@
                                 <Condition Property="IsEditable" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray9}" />
+                            <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.Gray9}" />
                         </MultiTrigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mah:ControlsHelper.MouseOverBorderBrush)}" />
@@ -608,7 +608,7 @@
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mah:ControlsHelper.FocusBorderBrush)}" />
-                            <Setter TargetName="PART_FloatingMessage" Property="Foreground" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                            <Setter TargetName="PART_FloatingMessage" Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Accent}" />
                             <Setter TargetName="PART_FloatingMessage" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocusWithin" Value="True">
@@ -656,8 +656,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MahApps.Styles.MultiSelectionComboBox.Horizontal"
-           BasedOn="{StaticResource MahApps.Styles.MultiSelectionComboBox}"
+    <Style x:Key="DevTools.MahApps.Styles.MultiSelectionComboBox.Horizontal"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.MultiSelectionComboBox}"
            TargetType="mah:MultiSelectionComboBox">
         <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="SelectedItemsPanelTemplate">

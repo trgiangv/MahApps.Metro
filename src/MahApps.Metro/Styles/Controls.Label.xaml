@@ -3,8 +3,8 @@
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls"
                     xmlns:mahConverters="clr-namespace:MahApps.Metro.Converters">
 
-    <Style x:Key="MahApps.Styles.Label" TargetType="{x:Type Label}">
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Text}" />
+    <Style x:Key="DevTools.MahApps.Styles.Label" TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Text}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>

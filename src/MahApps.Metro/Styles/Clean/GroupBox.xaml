@@ -5,8 +5,8 @@
 
     <converters:ThicknessFilterConverter x:Key="ThicknessFilterConverter" />
 
-    <Style x:Key="MahApps.Styles.GroupBox.Clean" TargetType="GroupBox">
-        <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.Gray7}" />
+    <Style x:Key="DevTools.MahApps.Styles.GroupBox.Clean" TargetType="GroupBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource DevTools.MahApps.Brushes.Gray7}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Margin" Value="4" />
         <Setter Property="Template">
@@ -76,7 +76,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="mah:HeaderedControlHelper.HeaderFontSize" Value="16" />
-        <Setter Property="mah:HeaderedControlHelper.HeaderForeground" Value="{DynamicResource MahApps.Brushes.Text}" />
+        <Setter Property="mah:HeaderedControlHelper.HeaderForeground" Value="{DynamicResource DevTools.MahApps.Brushes.Text}" />
     </Style>
 
 </ResourceDictionary>

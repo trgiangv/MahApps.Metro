@@ -4,9 +4,9 @@
                     xmlns:mahConverters="clr-namespace:MahApps.Metro.Converters">
 
     <Style TargetType="mah:Tile">
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
+        <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.Accent}" />
         <Setter Property="CountFontSize" Value="28" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.IdealForeground}" />
         <Setter Property="Height" Value="140" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Margin" Value="3" />

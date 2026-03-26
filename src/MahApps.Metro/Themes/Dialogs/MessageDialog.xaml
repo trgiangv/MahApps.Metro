@@ -2,10 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Themes/Dialogs/BaseMetroDialog.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Themes/Dialogs/BaseMetroDialog.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="MahApps.Templates.MessageDialog" TargetType="{x:Type dialogs:MessageDialog}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.MessageDialog" TargetType="{x:Type dialogs:MessageDialog}">
         <Grid Background="{TemplateBinding Background}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -83,23 +83,23 @@
                                 Margin="0 0 5 0"
                                 Content="{TemplateBinding AffirmativeButtonText}"
                                 FontSize="{TemplateBinding DialogButtonFontSize}"
-                                Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                                Style="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs}" />
                         <Button x:Name="PART_NegativeButton"
                                 Margin="5 0 5 0"
                                 Content="{TemplateBinding NegativeButtonText}"
                                 FontSize="{TemplateBinding DialogButtonFontSize}"
-                                Style="{DynamicResource MahApps.Styles.Button.Dialogs}" />
+                                Style="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs}" />
                         <Button x:Name="PART_FirstAuxiliaryButton"
                                 Margin="5 0 5 0"
                                 Content="{TemplateBinding FirstAuxiliaryButtonText}"
                                 FontSize="{TemplateBinding DialogButtonFontSize}"
-                                Style="{DynamicResource MahApps.Styles.Button.Dialogs}"
+                                Style="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs}"
                                 Visibility="Collapsed" />
                         <Button x:Name="PART_SecondAuxiliaryButton"
                                 Margin="5 0 0 0"
                                 Content="{TemplateBinding SecondAuxiliaryButtonText}"
                                 FontSize="{TemplateBinding DialogButtonFontSize}"
-                                Style="{DynamicResource MahApps.Styles.Button.Dialogs}"
+                                Style="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs}"
                                 Visibility="Collapsed" />
                     </StackPanel>
                 </Grid>
@@ -138,23 +138,23 @@
             </Trigger>
 
             <Trigger Property="DefaultButtonFocus" Value="Affirmative">
-                <Setter TargetName="PART_AffirmativeButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.Accent}" />
+                <Setter TargetName="PART_AffirmativeButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.Accent}" />
             </Trigger>
             <Trigger Property="DefaultButtonFocus" Value="Negative">
-                <Setter TargetName="PART_NegativeButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.Accent}" />
+                <Setter TargetName="PART_NegativeButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.Accent}" />
             </Trigger>
             <Trigger Property="DefaultButtonFocus" Value="FirstAuxiliary">
-                <Setter TargetName="PART_FirstAuxiliaryButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.Accent}" />
+                <Setter TargetName="PART_FirstAuxiliaryButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.Accent}" />
             </Trigger>
             <Trigger Property="DefaultButtonFocus" Value="SecondAuxiliary">
-                <Setter TargetName="PART_SecondAuxiliaryButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.Accent}" />
+                <Setter TargetName="PART_SecondAuxiliaryButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.Accent}" />
             </Trigger>
 
             <Trigger Property="ColorScheme" Value="Accented">
-                <Setter TargetName="PART_AffirmativeButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.AccentHighlight}" />
-                <Setter TargetName="PART_FirstAuxiliaryButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.AccentHighlight}" />
-                <Setter TargetName="PART_NegativeButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.AccentHighlight}" />
-                <Setter TargetName="PART_SecondAuxiliaryButton" Property="Style" Value="{DynamicResource MahApps.Styles.Button.Dialogs.AccentHighlight}" />
+                <Setter TargetName="PART_AffirmativeButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.AccentHighlight}" />
+                <Setter TargetName="PART_FirstAuxiliaryButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.AccentHighlight}" />
+                <Setter TargetName="PART_NegativeButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.AccentHighlight}" />
+                <Setter TargetName="PART_SecondAuxiliaryButton" Property="Style" Value="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.AccentHighlight}" />
             </Trigger>
 
             <Trigger Property="Title" Value="{x:Null}">
@@ -162,15 +162,15 @@
             </Trigger>
             <EventTrigger RoutedEvent="Loaded">
                 <EventTrigger.Actions>
-                    <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.Dialogs.Show}" />
+                    <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.Dialogs.Show}" />
                 </EventTrigger.Actions>
             </EventTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="MahApps.Styles.MessageDialog"
-           BasedOn="{StaticResource MahApps.Styles.BaseMetroDialog}"
+    <Style x:Key="DevTools.MahApps.Styles.MessageDialog"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.BaseMetroDialog}"
            TargetType="{x:Type dialogs:MessageDialog}">
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.MessageDialog}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.MessageDialog}" />
     </Style>
 </ResourceDictionary>

@@ -2,19 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.StatusBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.StatusBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MahApps.Styles.StatusBar.Clean"
-           BasedOn="{StaticResource MahApps.Styles.StatusBar}"
+    <Style x:Key="DevTools.MahApps.Styles.StatusBar.Clean"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.StatusBar}"
            TargetType="{x:Type StatusBar}">
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeForeground}" />
     </Style>
 
-    <Style x:Key="MahApps.Styles.Separator.Clean"
-           BasedOn="{StaticResource MahApps.Styles.Separator.StatusBar}"
+    <Style x:Key="DevTools.MahApps.Styles.Separator.Clean"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.Separator.StatusBar}"
            TargetType="{x:Type Separator}">
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
+        <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeForeground}" />
     </Style>
 
 </ResourceDictionary>

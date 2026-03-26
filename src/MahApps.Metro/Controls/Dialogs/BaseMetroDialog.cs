@@ -1,4 +1,4 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
@@ -366,8 +366,8 @@ namespace MahApps.Metro.Controls.Dialogs
             {
                 case MetroDialogColorScheme.Theme:
                     ThemeManager.Current.ChangeTheme(this, this.Resources, theme);
-                    this.SetCurrentValue(BackgroundProperty, TryGetResource(theme, "MahApps.Brushes.Dialog.Background"));
-                    this.SetCurrentValue(ForegroundProperty, TryGetResource(theme, "MahApps.Brushes.Dialog.Foreground"));
+                    this.SetCurrentValue(BackgroundProperty, TryGetResource(theme, "DevTools.MahApps.Brushes.Dialog.Background"));
+                    this.SetCurrentValue(ForegroundProperty, TryGetResource(theme, "DevTools.MahApps.Brushes.Dialog.Foreground"));
                     break;
 
                 case MetroDialogColorScheme.Inverted:
@@ -379,14 +379,14 @@ namespace MahApps.Metro.Controls.Dialogs
                     }
 
                     ThemeManager.Current.ChangeTheme(this, this.Resources, theme);
-                    this.SetCurrentValue(BackgroundProperty, TryGetResource(theme, "MahApps.Brushes.Dialog.Background"));
-                    this.SetCurrentValue(ForegroundProperty, TryGetResource(theme, "MahApps.Brushes.Dialog.Foreground"));
+                    this.SetCurrentValue(BackgroundProperty, TryGetResource(theme, "DevTools.MahApps.Brushes.Dialog.Background"));
+                    this.SetCurrentValue(ForegroundProperty, TryGetResource(theme, "DevTools.MahApps.Brushes.Dialog.Foreground"));
                     break;
 
                 case MetroDialogColorScheme.Accented:
                     ThemeManager.Current.ChangeTheme(this, this.Resources, theme);
-                    this.SetCurrentValue(BackgroundProperty, TryGetResource(theme, "MahApps.Brushes.Dialog.Background.Accent"));
-                    this.SetCurrentValue(ForegroundProperty, TryGetResource(theme, "MahApps.Brushes.Dialog.Foreground.Accent"));
+                    this.SetCurrentValue(BackgroundProperty, TryGetResource(theme, "DevTools.MahApps.Brushes.Dialog.Background.Accent"));
+                    this.SetCurrentValue(ForegroundProperty, TryGetResource(theme, "DevTools.MahApps.Brushes.Dialog.Foreground.Accent"));
                     break;
             }
         }
@@ -509,7 +509,7 @@ namespace MahApps.Metro.Controls.Dialogs
 
             if (this.DialogSettings.AnimateHide)
             {
-                if (this.TryFindResource("MahApps.Storyboard.Dialogs.Close") is not Storyboard closingStoryboard)
+                if (this.TryFindResource("DevTools.MahApps.Storyboard.Dialogs.Close") is not Storyboard closingStoryboard)
                 {
                     throw new InvalidOperationException("Unable to find the dialog closing storyboard. Did you forget to add BaseMetroDialog.xaml to your merged dictionaries?");
                 }

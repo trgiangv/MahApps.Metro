@@ -4,10 +4,10 @@
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.TabControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource MahApps.Styles.TabControl}" TargetType="{x:Type mah:MetroAnimatedTabControl}">
+    <Style BasedOn="{StaticResource DevTools.MahApps.Styles.TabControl}" TargetType="{x:Type mah:MetroAnimatedTabControl}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type mah:MetroAnimatedTabControl}">

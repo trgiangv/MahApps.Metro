@@ -7,37 +7,37 @@
                     mc:Ignorable="po">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.Buttons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.Buttons.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MahApps.Styles.Button.Dialogs"
-           BasedOn="{StaticResource MahApps.Styles.Button.Square}"
+    <Style x:Key="DevTools.MahApps.Styles.Button.Dialogs"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.Button.Square}"
            TargetType="{x:Type ButtonBase}">
         <Setter Property="MinHeight" Value="35" />
         <Setter Property="MinWidth" Value="80" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource MahApps.CharacterCasing.Button.Dialogs}" />
+        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource DevTools.MahApps.CharacterCasing.Button.Dialogs}" />
     </Style>
 
-    <Style x:Key="MahApps.Styles.Button.Dialogs.Accent"
-           BasedOn="{StaticResource MahApps.Styles.Button.Square.Accent}"
+    <Style x:Key="DevTools.MahApps.Styles.Button.Dialogs.Accent"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.Button.Square.Accent}"
            TargetType="{x:Type ButtonBase}">
         <Setter Property="MinHeight" Value="35" />
         <Setter Property="MinWidth" Value="80" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource MahApps.CharacterCasing.Button.Dialogs.Accent}" />
+        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource DevTools.MahApps.CharacterCasing.Button.Dialogs.Accent}" />
     </Style>
 
-    <Style x:Key="MahApps.Styles.Button.Dialogs.AccentHighlight"
-           BasedOn="{StaticResource MahApps.Styles.Button.Square.Highlight}"
+    <Style x:Key="DevTools.MahApps.Styles.Button.Dialogs.AccentHighlight"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.Button.Square.Highlight}"
            TargetType="{x:Type ButtonBase}">
         <Setter Property="MinHeight" Value="35" />
         <Setter Property="MinWidth" Value="80" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource MahApps.CharacterCasing.Button.Dialogs.AccentHighlight}" />
+        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource DevTools.MahApps.CharacterCasing.Button.Dialogs.AccentHighlight}" />
     </Style>
 
-    <Storyboard x:Key="MahApps.Storyboard.Dialogs.Show" po:Freeze="True">
+    <Storyboard x:Key="DevTools.MahApps.Storyboard.Dialogs.Show" po:Freeze="True">
         <DoubleAnimation AccelerationRatio=".9"
                          BeginTime="0:0:0"
                          Storyboard.TargetProperty="Opacity"
@@ -45,7 +45,7 @@
                          Duration="0:0:0.2" />
     </Storyboard>
 
-    <Storyboard x:Key="MahApps.Storyboard.Dialogs.Close" po:Freeze="True">
+    <Storyboard x:Key="DevTools.MahApps.Storyboard.Dialogs.Close" po:Freeze="True">
         <DoubleAnimation AccelerationRatio=".9"
                          BeginTime="0:0:0"
                          Storyboard.TargetProperty="Opacity"
@@ -53,7 +53,7 @@
                          Duration="0:0:0.2" />
     </Storyboard>
 
-    <ControlTemplate x:Key="MahApps.Templates.BaseMetroDialog" TargetType="{x:Type dialogs:BaseMetroDialog}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.BaseMetroDialog" TargetType="{x:Type dialogs:BaseMetroDialog}">
         <Grid Background="{TemplateBinding Background}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -117,19 +117,19 @@
             </Trigger>
             <EventTrigger RoutedEvent="Loaded">
                 <EventTrigger.Actions>
-                    <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.Dialogs.Show}" />
+                    <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.Dialogs.Show}" />
                 </EventTrigger.Actions>
             </EventTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="MahApps.Styles.BaseMetroDialog" TargetType="{x:Type dialogs:BaseMetroDialog}">
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Dialog.Background}" />
-        <Setter Property="DialogButtonFontSize" Value="{DynamicResource MahApps.Font.Size.Dialog.Button}" />
-        <Setter Property="DialogMessageFontSize" Value="{DynamicResource MahApps.Font.Size.Dialog.Message}" />
-        <Setter Property="DialogTitleFontSize" Value="{DynamicResource MahApps.Font.Size.Dialog.Title}" />
+    <Style x:Key="DevTools.MahApps.Styles.BaseMetroDialog" TargetType="{x:Type dialogs:BaseMetroDialog}">
+        <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.Dialog.Background}" />
+        <Setter Property="DialogButtonFontSize" Value="{DynamicResource DevTools.MahApps.Font.Size.Dialog.Button}" />
+        <Setter Property="DialogMessageFontSize" Value="{DynamicResource DevTools.MahApps.Font.Size.Dialog.Message}" />
+        <Setter Property="DialogTitleFontSize" Value="{DynamicResource DevTools.MahApps.Font.Size.Dialog.Title}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Dialog.Foreground}" />
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Dialog.Foreground}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="KeyboardNavigation.ControlTabNavigation" Value="Cycle" />
@@ -137,13 +137,13 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="Cycle" />
         <Setter Property="Opacity" Value="0" />
         <Setter Property="Padding" Value="0 10 0 0" />
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.BaseMetroDialog}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.BaseMetroDialog}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding DialogSettings.ColorScheme, RelativeSource={RelativeSource Self}, Mode=OneWay}" Value="{x:Static dialogs:MetroDialogColorScheme.Accented}">
-                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Dialog.Background.Accent}" />
-                <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Dialog.Foreground.Accent}" />
+                <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.Dialog.Background.Accent}" />
+                <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Dialog.Foreground.Accent}" />
             </DataTrigger>
         </Style.Triggers>
     </Style>

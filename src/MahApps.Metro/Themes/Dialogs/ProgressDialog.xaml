@@ -3,10 +3,10 @@
                     xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs"
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Themes/Dialogs/BaseMetroDialog.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Themes/Dialogs/BaseMetroDialog.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="MahApps.Templates.ProgressDialog" TargetType="{x:Type dialogs:ProgressDialog}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.ProgressDialog" TargetType="{x:Type dialogs:ProgressDialog}">
         <Grid Background="{TemplateBinding Background}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -79,7 +79,7 @@
                                 Content="{TemplateBinding NegativeButtonText}"
                                 Cursor="Arrow"
                                 FontSize="{TemplateBinding DialogButtonFontSize}"
-                                Style="{DynamicResource MahApps.Styles.Button.Dialogs.Accent}"
+                                Style="{DynamicResource DevTools.MahApps.Styles.Button.Dialogs.Accent}"
                                 Visibility="Hidden" />
                     </StackPanel>
                 </Grid>
@@ -106,7 +106,7 @@
             </Trigger>
 
             <Trigger Property="ColorScheme" Value="Accented">
-                <Setter TargetName="PART_ProgressBar" Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+                <Setter TargetName="PART_ProgressBar" Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.IdealForeground}" />
             </Trigger>
 
             <Trigger Property="Title" Value="{x:Null}">
@@ -114,16 +114,16 @@
             </Trigger>
             <EventTrigger RoutedEvent="Loaded">
                 <EventTrigger.Actions>
-                    <BeginStoryboard Storyboard="{StaticResource MahApps.Storyboard.Dialogs.Show}" />
+                    <BeginStoryboard Storyboard="{StaticResource DevTools.MahApps.Storyboard.Dialogs.Show}" />
                 </EventTrigger.Actions>
             </EventTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="MahApps.Styles.ProgressDialog"
-           BasedOn="{StaticResource MahApps.Styles.BaseMetroDialog}"
+    <Style x:Key="DevTools.MahApps.Styles.ProgressDialog"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.BaseMetroDialog}"
            TargetType="{x:Type dialogs:ProgressDialog}">
-        <Setter Property="ProgressBarForeground" Value="{DynamicResource MahApps.Brushes.Accent}" />
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.ProgressDialog}" />
+        <Setter Property="ProgressBarForeground" Value="{DynamicResource DevTools.MahApps.Brushes.Accent}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.ProgressDialog}" />
     </Style>
 </ResourceDictionary>

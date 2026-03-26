@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls">
 
-    <Style x:Key="MahApps.Styles.MetroHeader" TargetType="{x:Type mah:MetroHeader}">
+    <Style x:Key="DevTools.MahApps.Styles.MetroHeader" TargetType="{x:Type mah:MetroHeader}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -66,7 +66,7 @@
         </Setter>
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="mah:HeaderedControlHelper.HeaderBackground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Background, Mode=OneWay}" />
-        <Setter Property="mah:HeaderedControlHelper.HeaderFontSize" Value="{DynamicResource MahApps.Font.Size.Default}" />
+        <Setter Property="mah:HeaderedControlHelper.HeaderFontSize" Value="{DynamicResource DevTools.MahApps.Font.Size.Default}" />
         <Setter Property="mah:HeaderedControlHelper.HeaderForeground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Mode=OneWay}" />
         <Setter Property="mah:HeaderedControlHelper.HeaderMargin" Value="0 0 0 2" />
     </Style>

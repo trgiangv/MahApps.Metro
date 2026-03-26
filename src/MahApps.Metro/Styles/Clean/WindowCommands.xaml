@@ -3,15 +3,15 @@
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Themes/WindowCommands.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Themes/WindowCommands.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="MahApps.Styles.WindowCommands.Clean"
-           BasedOn="{StaticResource MahApps.Styles.WindowCommands.Base}"
+    <Style x:Key="DevTools.MahApps.Styles.WindowCommands.Clean"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.WindowCommands.Base}"
            TargetType="{x:Type mah:WindowCommands}">
         <Setter Property="SeparatorHeight" Value="11" />
         <Setter Property="ShowLastSeparator" Value="False" />
-        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource MahApps.CharacterCasing.WindowCommands.Clean}" />
+        <Setter Property="mah:ControlsHelper.ContentCharacterCasing" Value="{DynamicResource DevTools.MahApps.CharacterCasing.WindowCommands.Clean}" />
     </Style>
 
 </ResourceDictionary>

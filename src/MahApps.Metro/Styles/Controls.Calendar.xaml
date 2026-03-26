@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <Style x:Key="MahApps.Styles.CalendarDayButton" TargetType="{x:Type CalendarDayButton}">
+    <Style x:Key="DevTools.MahApps.Styles.CalendarDayButton" TargetType="{x:Type CalendarDayButton}">
         <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}, Path=FontFamily, Mode=OneWay, FallbackValue={x:Static SystemFonts.MessageFontFamily}}" />
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}, Path=FontSize, Mode=OneWay, FallbackValue={x:Static SystemFonts.MessageFontSize}}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -14,23 +14,23 @@
                 <ControlTemplate TargetType="{x:Type CalendarDayButton}">
                     <Grid>
                         <Rectangle x:Name="TodayBackground"
-                                   Fill="{DynamicResource MahApps.Brushes.Accent}"
+                                   Fill="{DynamicResource DevTools.MahApps.Brushes.Accent}"
                                    Opacity="0" />
                         <Rectangle x:Name="SelectedBackground"
-                                   Fill="{DynamicResource MahApps.Brushes.Accent4}"
+                                   Fill="{DynamicResource DevTools.MahApps.Brushes.Accent4}"
                                    Opacity="0" />
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}" />
                         <Rectangle x:Name="HighlightBackground"
-                                   Fill="{DynamicResource MahApps.Brushes.Accent4}"
+                                   Fill="{DynamicResource DevTools.MahApps.Brushes.Accent4}"
                                    Opacity="0" />
                         <Path x:Name="Blackout"
                               Margin="3"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch"
                               Data="M8.1772461,11.029181 L10.433105,11.029181 L11.700684,12.801641 L12.973633,11.029181 L15.191895,11.029181 L12.844727,13.999395 L15.21875,17.060919 L12.962891,17.060919 L11.673828,15.256231 L10.352539,17.060919 L8.1396484,17.060919 L10.519043,14.042364 z"
-                              Fill="{DynamicResource MahApps.Brushes.Accent3}"
+                              Fill="{DynamicResource DevTools.MahApps.Brushes.Accent3}"
                               Opacity="0"
                               RenderTransformOrigin="0.5,0.5"
                               Stretch="Fill" />
@@ -41,7 +41,7 @@
                                           TextElement.Foreground="{TemplateBinding Foreground}" />
                         <Rectangle x:Name="DayButtonFocusVisual"
                                    IsHitTestVisible="false"
-                                   Stroke="{DynamicResource MahApps.Brushes.Accent3}"
+                                   Stroke="{DynamicResource DevTools.MahApps.Brushes.Accent3}"
                                    Visibility="Collapsed" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -91,13 +91,13 @@
                     <ControlTemplate.Triggers>
                         <!--  IsInactive  -->
                         <Trigger Property="IsInactive" Value="True">
-                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource MahApps.Brushes.Gray2}" />
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Gray2}" />
                         </Trigger>
 
                         <!--  IsSelected  -->
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.AccentBase}" />
                         </Trigger>
 
                         <!--  IsToday, IsTodayHighlighted and IsSelected  -->
@@ -107,9 +107,9 @@
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsToday, FallbackValue=False}" Value="True" />
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected, FallbackValue=False}" Value="True" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="DayButtonFocusVisual" Property="Stroke" Value="{DynamicResource MahApps.Brushes.Gray1}" />
+                            <Setter TargetName="DayButtonFocusVisual" Property="Stroke" Value="{DynamicResource DevTools.MahApps.Brushes.Gray1}" />
                             <Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Accent}" />
                         </MultiDataTrigger>
 
                         <!--  IsToday and IsTodayHighlighted  -->
@@ -118,7 +118,7 @@
                                 <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}, Path=IsTodayHighlighted, FallbackValue=True}" Value="True" />
                                 <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsToday, FallbackValue=False}" Value="True" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource MahApps.Brushes.Selected.Foreground}" />
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Selected.Foreground}" />
                             <Setter TargetName="TodayBackground" Property="Opacity" Value="1" />
                         </MultiDataTrigger>
 
@@ -133,7 +133,7 @@
                                 <Condition Property="IsToday" Value="True" />
                                 <Condition Property="IsBlackedOut" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Blackout" Property="Fill" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                            <Setter TargetName="Blackout" Property="Fill" Value="{DynamicResource DevTools.MahApps.Brushes.Accent}" />
                             <Setter TargetName="TodayBackground" Property="Opacity" Value="0.5" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
@@ -143,9 +143,9 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-    <ControlTemplate x:Key="MahApps.Templates.Button.Calendar.Previous" TargetType="{x:Type Button}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.Button.Calendar.Previous" TargetType="{x:Type Button}">
         <Grid Cursor="Hand">
-            <Rectangle Fill="{DynamicResource MahApps.Brushes.Accent}"
+            <Rectangle Fill="{DynamicResource DevTools.MahApps.Brushes.Accent}"
                        Opacity="0.1"
                        Stretch="Fill" />
             <Path x:Name="path"
@@ -182,9 +182,9 @@
         </Grid>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="MahApps.Templates.Button.Calendar.Next" TargetType="{x:Type Button}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.Button.Calendar.Next" TargetType="{x:Type Button}">
         <Grid Cursor="Hand">
-            <Rectangle Fill="{DynamicResource MahApps.Brushes.Accent}"
+            <Rectangle Fill="{DynamicResource DevTools.MahApps.Brushes.Accent}"
                        Opacity="0.1"
                        Stretch="Fill" />
             <Path x:Name="path"
@@ -221,7 +221,7 @@
         </Grid>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="MahApps.Templates.Button.Calendar.Header" TargetType="{x:Type Button}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.Button.Calendar.Header" TargetType="{x:Type Button}">
         <Grid Cursor="Hand">
             <ContentPresenter x:Name="buttonContent"
                               Margin="1 4 1 5"
@@ -254,29 +254,29 @@
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="MahApps.Styles.Button.Calendar.Previous" TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+    <Style x:Key="DevTools.MahApps.Styles.Button.Calendar.Previous" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.IdealForeground}" />
         <Setter Property="Height" Value="20" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.Button.Calendar.Previous}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.Button.Calendar.Previous}" />
         <Setter Property="Width" Value="28" />
     </Style>
-    <Style x:Key="MahApps.Styles.Button.Calendar.Next" TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+    <Style x:Key="DevTools.MahApps.Styles.Button.Calendar.Next" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.IdealForeground}" />
         <Setter Property="Height" Value="20" />
         <Setter Property="HorizontalAlignment" Value="Right" />
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.Button.Calendar.Next}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.Button.Calendar.Next}" />
         <Setter Property="Width" Value="28" />
     </Style>
-    <Style x:Key="MahApps.Styles.Button.Calendar.Header" TargetType="{x:Type Button}">
+    <Style x:Key="DevTools.MahApps.Styles.Button.Calendar.Header" TargetType="{x:Type Button}">
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.IdealForeground}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.Button.Calendar.Header}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.Button.Calendar.Header}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="MahApps.Styles.CalendarItem" TargetType="{x:Type CalendarItem}">
+    <Style x:Key="DevTools.MahApps.Styles.CalendarItem" TargetType="{x:Type CalendarItem}">
         <Setter Property="Margin" Value="0 3" />
         <Setter Property="Padding" Value="2" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -290,7 +290,7 @@
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontWeight="Bold"
-                                       Foreground="{DynamicResource MahApps.Brushes.ThemeForeground}"
+                                       Foreground="{DynamicResource DevTools.MahApps.Brushes.ThemeForeground}"
                                        Opacity="0.8"
                                        Text="{Binding}" />
                         </DataTemplate>
@@ -311,19 +311,19 @@
 
                                 <Grid Grid.Row="0"
                                       HorizontalAlignment="Stretch"
-                                      Background="{DynamicResource MahApps.Brushes.Accent}">
+                                      Background="{DynamicResource DevTools.MahApps.Brushes.Accent}">
                                     <Button x:Name="PART_HeaderButton"
                                             Grid.Row="0"
                                             Focusable="False"
-                                            Style="{DynamicResource MahApps.Styles.Button.Calendar.Header}" />
+                                            Style="{DynamicResource DevTools.MahApps.Styles.Button.Calendar.Header}" />
                                     <Button x:Name="PART_PreviousButton"
                                             Grid.Row="0"
                                             Focusable="False"
-                                            Style="{DynamicResource MahApps.Styles.Button.Calendar.Previous}" />
+                                            Style="{DynamicResource DevTools.MahApps.Styles.Button.Calendar.Previous}" />
                                     <Button x:Name="PART_NextButton"
                                             Grid.Row="0"
                                             Focusable="False"
-                                            Style="{DynamicResource MahApps.Styles.Button.Calendar.Next}" />
+                                            Style="{DynamicResource DevTools.MahApps.Styles.Button.Calendar.Next}" />
                                 </Grid>
                                 <Grid x:Name="PART_MonthView"
                                       Grid.Row="1"
@@ -371,10 +371,10 @@
                             </Grid>
                         </Border>
                         <Rectangle x:Name="PART_DisabledVisual"
-                                   Fill="{DynamicResource MahApps.Brushes.Control.Disabled}"
+                                   Fill="{DynamicResource DevTools.MahApps.Brushes.Control.Disabled}"
                                    Opacity="0"
                                    Stretch="Fill"
-                                   Stroke="{DynamicResource MahApps.Brushes.Control.Disabled}"
+                                   Stroke="{DynamicResource DevTools.MahApps.Brushes.Control.Disabled}"
                                    StrokeThickness="1"
                                    Visibility="Collapsed" />
                         <VisualStateManager.VisualStateGroups>
@@ -410,8 +410,8 @@
     </Style>
 
     <!--  Style for Month and Year buttons  -->
-    <Style x:Key="MahApps.Styles.CalendarButton" TargetType="{x:Type CalendarButton}">
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent4}" />
+    <Style x:Key="DevTools.MahApps.Styles.CalendarButton" TargetType="{x:Type CalendarButton}">
+        <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.Accent4}" />
         <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}, Path=FontFamily, Mode=OneWay, FallbackValue={x:Static SystemFonts.MessageFontFamily}}" />
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}, Path=FontSize, Mode=OneWay, FallbackValue={x:Static SystemFonts.MessageFontSize}}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -435,7 +435,7 @@
                                           TextElement.Foreground="{TemplateBinding Foreground}" />
                         <Rectangle x:Name="CalendarButtonFocusVisual"
                                    IsHitTestVisible="false"
-                                   Stroke="{DynamicResource MahApps.Brushes.Accent3}"
+                                   Stroke="{DynamicResource DevTools.MahApps.Brushes.Accent3}"
                                    Visibility="Collapsed" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -514,7 +514,7 @@
                     <ControlTemplate.Triggers>
                         <!--  IsInactive  -->
                         <Trigger Property="IsInactive" Value="True">
-                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource MahApps.Brushes.Gray2}" />
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Gray2}" />
                         </Trigger>
 
                         <Trigger Property="IsFocused" Value="True">
@@ -527,14 +527,14 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="MahApps.Styles.Calendar.Base" TargetType="{x:Type Calendar}">
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeBackground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
+    <Style x:Key="DevTools.MahApps.Styles.Calendar.Base" TargetType="{x:Type Calendar}">
+        <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeForeground}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CalendarButtonStyle" Value="{DynamicResource MahApps.Styles.CalendarButton}" />
-        <Setter Property="CalendarDayButtonStyle" Value="{DynamicResource MahApps.Styles.CalendarDayButton}" />
-        <Setter Property="CalendarItemStyle" Value="{DynamicResource MahApps.Styles.CalendarItem}" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Text}" />
+        <Setter Property="CalendarButtonStyle" Value="{DynamicResource DevTools.MahApps.Styles.CalendarButton}" />
+        <Setter Property="CalendarDayButtonStyle" Value="{DynamicResource DevTools.MahApps.Styles.CalendarDayButton}" />
+        <Setter Property="CalendarItemStyle" Value="{DynamicResource DevTools.MahApps.Styles.CalendarItem}" />
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.Text}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
@@ -555,17 +555,17 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MahApps.Styles.Calendar"
-           BasedOn="{StaticResource MahApps.Styles.Calendar.Base}"
+    <Style x:Key="DevTools.MahApps.Styles.Calendar"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.Calendar.Base}"
            TargetType="{x:Type Calendar}">
-        <Setter Property="FontFamily" Value="{DynamicResource MahApps.Fonts.Family.Control}" />
-        <Setter Property="FontSize" Value="{DynamicResource MahApps.Font.Size.Content}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DevTools.MahApps.Fonts.Family.Control}" />
+        <Setter Property="FontSize" Value="{DynamicResource DevTools.MahApps.Font.Size.Content}" />
     </Style>
 
-    <Style x:Key="MahApps.Styles.Calendar.DateTimePicker"
-           BasedOn="{StaticResource MahApps.Styles.Calendar.Base}"
+    <Style x:Key="DevTools.MahApps.Styles.Calendar.DateTimePicker"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.Calendar.Base}"
            TargetType="{x:Type Calendar}">
-        <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.Control.Border}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DevTools.MahApps.Brushes.Control.Border}" />
     </Style>
 
 </ResourceDictionary>

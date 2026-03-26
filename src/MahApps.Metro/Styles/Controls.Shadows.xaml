@@ -4,22 +4,22 @@
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
                     mc:Ignorable="po">
 
-    <DropShadowEffect x:Key="MahApps.DropShadowEffect.Menu"
+    <DropShadowEffect x:Key="DevTools.MahApps.DropShadowEffect.Menu"
                       x:Shared="False"
                       BlurRadius="4"
                       Direction="315"
                       Opacity="0.3"
                       ShadowDepth="2"
-                      Color="{DynamicResource MahApps.Colors.MenuShadow}"
+                      Color="{DynamicResource DevTools.MahApps.Colors.MenuShadow}"
                       po:Freeze="True" />
 
-    <DropShadowEffect x:Key="MahApps.DropShadowEffect.ToolTip"
+    <DropShadowEffect x:Key="DevTools.MahApps.DropShadowEffect.ToolTip"
                       x:Shared="False"
                       BlurRadius="4"
                       Direction="315"
                       Opacity="0.3"
                       ShadowDepth="2"
-                      Color="{DynamicResource MahApps.Colors.ToolTipShadow}"
+                      Color="{DynamicResource DevTools.MahApps.Colors.ToolTipShadow}"
                       po:Freeze="True" />
 
     <DropShadowEffect x:Key="DropShadowBrush"

@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
     <!-- Project properties -->
     <PropertyGroup>
-        <AssemblyName>MahApps.Metro</AssemblyName>
+        <AssemblyName>DevTools.MahApps.Metro</AssemblyName>
         <Title>MahApps.Metro</Title>
         <RootNamespace>MahApps.Metro</RootNamespace>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ControlzEx" />
+        <ProjectReference Include="..\..\..\..\libs\ControlzEx\src\ControlzEx\ControlzEx.csproj" />
         <PackageReference Include="XAMLTools.MSBuild" PrivateAssets="all" IncludeAssets="build" />
         <PackageReference Include="Microsoft.Windows.CsWin32">
             <PrivateAssets>all</PrivateAssets>

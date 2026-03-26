@@ -3,17 +3,17 @@
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Clean/GroupBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Clean/MetroWindow.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Clean/WindowButtonCommands.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Clean/WindowCommands.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Clean/StatusBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Clean/GroupBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Clean/MetroWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Clean/WindowButtonCommands.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Clean/WindowCommands.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Clean/StatusBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource MahApps.Styles.GroupBox.Clean}" TargetType="{x:Type GroupBox}" />
-    <Style BasedOn="{StaticResource MahApps.Styles.MetroWindow.Clean}" TargetType="{x:Type mah:MetroWindow}" />
-    <Style BasedOn="{StaticResource MahApps.Styles.WindowButtonCommands.Clean.Win10}" TargetType="{x:Type mah:WindowButtonCommands}" />
-    <Style BasedOn="{StaticResource MahApps.Styles.WindowCommands.Clean}" TargetType="{x:Type mah:WindowCommands}" />
-    <Style BasedOn="{StaticResource MahApps.Styles.StatusBar.Clean}" TargetType="{x:Type StatusBar}" />
+    <Style BasedOn="{StaticResource DevTools.MahApps.Styles.GroupBox.Clean}" TargetType="{x:Type GroupBox}" />
+    <Style BasedOn="{StaticResource DevTools.MahApps.Styles.MetroWindow.Clean}" TargetType="{x:Type mah:MetroWindow}" />
+    <Style BasedOn="{StaticResource DevTools.MahApps.Styles.WindowButtonCommands.Clean.Win10}" TargetType="{x:Type mah:WindowButtonCommands}" />
+    <Style BasedOn="{StaticResource DevTools.MahApps.Styles.WindowCommands.Clean}" TargetType="{x:Type mah:WindowCommands}" />
+    <Style BasedOn="{StaticResource DevTools.MahApps.Styles.StatusBar.Clean}" TargetType="{x:Type StatusBar}" />
 
 </ResourceDictionary>

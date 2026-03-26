@@ -1,19 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controlzEx="urn:controlzex"
+                    xmlns:controlzEx="urn:devtools-controlzex"
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls"
                     xmlns:mahConverters="clr-namespace:MahApps.Metro.Converters">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.TextBlock.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Themes/Thumb.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.TextBlock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Themes/Thumb.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     <mahConverters:ThicknessBindingConverter x:Key="ThicknessBindingConverter" />
     <mahConverters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter" />
 
-    <ControlTemplate x:Key="MahApps.Templates.MetroWindow" TargetType="{x:Type mah:MetroWindow}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.MetroWindow" TargetType="{x:Type mah:MetroWindow}">
         <mah:ClipBorder x:Name="PART_Border"
                         Margin="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
@@ -68,7 +68,7 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="3"
-                                        Style="{StaticResource MahApps.Styles.Thumb.WindowTitle}"
+                                        Style="{StaticResource DevTools.MahApps.Styles.Thumb.WindowTitle}"
                                         UseLayoutRounding="True" />
 
                         <DockPanel Grid.Row="0"
@@ -149,7 +149,7 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="3"
-                                        Style="{StaticResource MahApps.Styles.Thumb.WindowTitle}"
+                                        Style="{StaticResource DevTools.MahApps.Styles.Thumb.WindowTitle}"
                                         Visibility="{Binding ElementName=PART_FlyoutModal, Path=Visibility, Mode=OneWay}" />
 
                         <!--  flyouts  -->
@@ -259,7 +259,7 @@
 
     </ControlTemplate>
 
-    <ControlTemplate x:Key="MahApps.Templates.MetroWindow.Center" TargetType="{x:Type mah:MetroWindow}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.MetroWindow.Center" TargetType="{x:Type mah:MetroWindow}">
         <mah:ClipBorder x:Name="PART_Border"
                         Margin="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
@@ -314,7 +314,7 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="3"
-                                        Style="{StaticResource MahApps.Styles.Thumb.WindowTitle}"
+                                        Style="{StaticResource DevTools.MahApps.Styles.Thumb.WindowTitle}"
                                         UseLayoutRounding="True" />
 
                         <!--  the title bar  -->
@@ -402,7 +402,7 @@
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="3"
-                                        Style="{StaticResource MahApps.Styles.Thumb.WindowTitle}"
+                                        Style="{StaticResource DevTools.MahApps.Styles.Thumb.WindowTitle}"
                                         Visibility="{Binding ElementName=PART_FlyoutModal, Path=Visibility, Mode=OneWay}" />
 
                         <!--  flyouts  -->
@@ -545,35 +545,35 @@
     </Storyboard>
 
     <Style TargetType="{x:Type mah:MetroWindow}">
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.ThemeBackground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
+        <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DevTools.MahApps.Brushes.AccentBase}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FlyoutOverlayBrush" Value="{DynamicResource MahApps.Brushes.Window.FlyoutOverlay}" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
-        <Setter Property="GlowColor" Value="{DynamicResource MahApps.Colors.AccentBase}" />
-        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource MahApps.Brushes.Border.NonActive}" />
-        <Setter Property="NonActiveGlowColor" Value="{DynamicResource MahApps.Colors.ThemeForeground}" />
-        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MahApps.Brushes.WindowTitle.NonActive}" />
-        <Setter Property="OverlayBrush" Value="{DynamicResource MahApps.Brushes.ThemeForeground}" />
+        <Setter Property="FlyoutOverlayBrush" Value="{DynamicResource DevTools.MahApps.Brushes.Window.FlyoutOverlay}" />
+        <Setter Property="Foreground" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeForeground}" />
+        <Setter Property="GlowColor" Value="{DynamicResource DevTools.MahApps.Colors.AccentBase}" />
+        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource DevTools.MahApps.Brushes.Border.NonActive}" />
+        <Setter Property="NonActiveGlowColor" Value="{DynamicResource DevTools.MahApps.Colors.ThemeForeground}" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource DevTools.MahApps.Brushes.WindowTitle.NonActive}" />
+        <Setter Property="OverlayBrush" Value="{DynamicResource DevTools.MahApps.Brushes.ThemeForeground}" />
         <Setter Property="OverlayFadeIn" Value="{StaticResource OverlayFastSemiFadeIn}" />
         <Setter Property="OverlayFadeOut" Value="{StaticResource OverlayFastSemiFadeOut}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.MetroWindow}" />
-        <Setter Property="TextElement.FontSize" Value="{DynamicResource MahApps.Font.Size.Content}" />
-        <Setter Property="TitleForeground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.MetroWindow}" />
+        <Setter Property="TextElement.FontSize" Value="{DynamicResource DevTools.MahApps.Font.Size.Content}" />
+        <Setter Property="TitleForeground" Value="{DynamicResource DevTools.MahApps.Brushes.IdealForeground}" />
         <Setter Property="TitleTemplate">
             <Setter.Value>
                 <DataTemplate>
                     <TextBlock Margin="8 -1 1 0"
                                VerticalAlignment="Center"
-                               FontFamily="{DynamicResource MahApps.Fonts.Family.Window.Title}"
-                               FontSize="{DynamicResource MahApps.Font.Size.Window.Title}"
+                               FontFamily="{DynamicResource DevTools.MahApps.Fonts.Family.Window.Title}"
+                               FontSize="{DynamicResource DevTools.MahApps.Font.Size.Window.Title}"
                                Text="{TemplateBinding Content}"
                                TextTrimming="CharacterEllipsis" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="WindowTitleBrush" Value="{DynamicResource MahApps.Brushes.WindowTitle}" />
+        <Setter Property="WindowTitleBrush" Value="{DynamicResource DevTools.MahApps.Brushes.WindowTitle}" />
         <Setter Property="controlzEx:WindowBackdropManager.BackdropType" Value="Mica" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Icon, Mode=OneWay, Converter={x:Static mahConverters:IsNullConverter.Instance}}" Value="False">
@@ -591,17 +591,17 @@
                 </Setter>
             </DataTrigger>
             <Trigger Property="TitleAlignment" Value="Center">
-                <Setter Property="Template" Value="{StaticResource MahApps.Templates.MetroWindow.Center}" />
+                <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.MetroWindow.Center}" />
             </Trigger>
             <Trigger Property="UseNativeCaptionButtons" Value="True">
                 <Setter Property="GlassFrameThickness" Value="-1" />
             </Trigger>
             <Trigger Property="controlzEx:WindowBackdropManager.CurrentBackdropType" Value="Acrylic">
-                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Window.Background.Backdrop.Acrylic}" />
+                <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.Window.Background.Backdrop.Acrylic}" />
                 <Setter Property="GlassFrameThickness" Value="-1" />
             </Trigger>
             <Trigger Property="controlzEx:WindowBackdropManager.CurrentBackdropType" Value="Auto">
-                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Window.Background.Backdrop.Auto}" />
+                <Setter Property="Background" Value="{DynamicResource DevTools.MahApps.Brushes.Window.Background.Backdrop.Auto}" />
                 <Setter Property="GlassFrameThickness" Value="-1" />
             </Trigger>
             <Trigger Property="controlzEx:WindowBackdropManager.CurrentBackdropType" Value="Mica">

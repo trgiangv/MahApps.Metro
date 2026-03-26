@@ -3,11 +3,11 @@
                     xmlns:mah="clr-namespace:MahApps.Metro.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/DevTools.MahApps.Metro;component/Styles/Controls.TabControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!--  Keep the VisualTree in Memory when changing tabs  -->
-    <ControlTemplate x:Key="MahApps.Templates.MetroTabControl.KeepVisualTreeInMemory" TargetType="{x:Type mah:MetroTabControl}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.MetroTabControl.KeepVisualTreeInMemory" TargetType="{x:Type mah:MetroTabControl}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="ColumnDefinition0" />
@@ -85,7 +85,7 @@
     </ControlTemplate>
 
     <!--  Do not keep the VisualTree in Memory when changing tabs  -->
-    <ControlTemplate x:Key="MahApps.Templates.MetroTabControl.DoNotKeepVisualTreeInMemory" TargetType="{x:Type mah:MetroTabControl}">
+    <ControlTemplate x:Key="DevTools.MahApps.Templates.MetroTabControl.DoNotKeepVisualTreeInMemory" TargetType="{x:Type mah:MetroTabControl}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="ColumnDefinition0" />
@@ -164,12 +164,12 @@
     </ControlTemplate>
 
     <Style x:Key="{x:Type mah:MetroTabControl}"
-           BasedOn="{StaticResource MahApps.Styles.TabControl}"
+           BasedOn="{StaticResource DevTools.MahApps.Styles.TabControl}"
            TargetType="{x:Type mah:MetroTabControl}">
-        <Setter Property="Template" Value="{StaticResource MahApps.Templates.MetroTabControl.DoNotKeepVisualTreeInMemory}" />
+        <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.MetroTabControl.DoNotKeepVisualTreeInMemory}" />
         <Style.Triggers>
             <Trigger Property="KeepVisualTreeInMemoryWhenChangingTabs" Value="True">
-                <Setter Property="Template" Value="{StaticResource MahApps.Templates.MetroTabControl.KeepVisualTreeInMemory}" />
+                <Setter Property="Template" Value="{StaticResource DevTools.MahApps.Templates.MetroTabControl.KeepVisualTreeInMemory}" />
             </Trigger>
         </Style.Triggers>
     </Style>
