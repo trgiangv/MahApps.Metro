@@ -4,10 +4,10 @@
 
 // ReSharper disable once CheckNamespace
 
-namespace Windows.Win32;
-
 using System.Runtime.CompilerServices;
 using Windows.Win32.Foundation;
+
+namespace Windows.Win32;
 
 internal static class PInvokeExtensions
 {

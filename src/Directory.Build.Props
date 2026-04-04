@@ -7,7 +7,7 @@
 
     <!-- Project properties -->
     <PropertyGroup>
-        <TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+        <TargetFrameworks>net48;net8.0-windows;net10.0-windows</TargetFrameworks>
         <LangVersion>latestmajor</LangVersion>
 
         <IsBuildingForLegacyFramework>false</IsBuildingForLegacyFramework>

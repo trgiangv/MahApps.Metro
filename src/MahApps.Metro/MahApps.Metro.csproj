@@ -33,7 +33,6 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="System.Memory" Condition="'$(IsBuildingForLegacyFramework)' == 'false'" />
         <PackageReference Include="System.ValueTuple" Condition="'$(IsBuildingForLegacyFramework)' == 'true'" />
     </ItemGroup>
 
