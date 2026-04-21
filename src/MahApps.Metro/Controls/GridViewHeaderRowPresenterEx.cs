@@ -30,7 +30,9 @@ namespace MahApps.Metro.Controls
                                 var itemsControl = FindItemsControlThroughTemplatedParent(this);
                                 if (itemsControl is not null)
                                 {
-                                    var brush = ItemHelper.GetGridViewHeaderIndicatorBrush(itemsControl) ?? Brushes.Navy;
+                                    var brush = ItemHelper.GetGridViewHeaderIndicatorBrush(itemsControl)
+                                                ?? itemsControl.TryFindResource("DevTools.MahApps.Brushes.AccentBase") as Brush
+                                                ?? Brushes.Navy;
                                     border.SetValue(Border.BackgroundProperty, brush);
                                 }
                             }
