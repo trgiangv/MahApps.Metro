@@ -627,10 +627,14 @@
                             <Setter TargetName="DisabledVisualElement" Property="Opacity" Value="0.6" />
                         </Trigger>
 
-                        <Trigger Property="HasCustomText" Value="True">
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="HasCustomText" Value="True" />
+                                <Condition Property="IsEditable" Value="True" />
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="PART_PopupListBox" Property="IsEnabled" Value="False" />
                             <Setter TargetName="PART_PopupOverlay" Property="Visibility" Value="Visible" />
-                        </Trigger>
+                        </MultiTrigger>
 
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
