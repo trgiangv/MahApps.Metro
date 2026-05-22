@@ -1206,9 +1206,7 @@ namespace MahApps.Metro.Controls
 
             if (this.PART_PopupListBox is not null)
             {
-                this.PART_PopupListBox.SelectionChanged += this.PART_PopupListBox_SelectionChanged;
-                this.SyncSelectedItems(this.SelectedItems, this.PART_PopupListBox.SelectedItems, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-                this.PART_PopupListBox.SelectionChanged -= this.PART_PopupListBox_SelectionChanged;
+                this.SyncPopupSelectionFromSelectedItems();
 
                 //this.BeginInvoke(() =>
                 //    {
@@ -1221,6 +1219,32 @@ namespace MahApps.Metro.Controls
             // Do update the text and selection
             this.UpdateDisplaySelectedItems();
             this.UpdateEditableText(true);
+        }
+
+        private void SyncPopupSelectionFromSelectedItems()
+        {
+            if (this.PART_PopupListBox is null)
+            {
+                return;
+            }
+
+            this.ClearPopupSingleSelectionBindingsForMultiSelection();
+
+            this.PART_PopupListBox.SelectionChanged += this.PART_PopupListBox_SelectionChanged;
+            this.SyncSelectedItems(this.SelectedItems, this.PART_PopupListBox.SelectedItems, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            this.PART_PopupListBox.SelectionChanged -= this.PART_PopupListBox_SelectionChanged;
+        }
+
+        private void ClearPopupSingleSelectionBindingsForMultiSelection()
+        {
+            if (this.PART_PopupListBox is null || this.SelectionMode == SelectionMode.Single)
+            {
+                return;
+            }
+
+            BindingOperations.ClearBinding(this.PART_PopupListBox, Selector.SelectedIndexProperty);
+            BindingOperations.ClearBinding(this.PART_PopupListBox, Selector.SelectedItemProperty);
+            BindingOperations.ClearBinding(this.PART_PopupListBox, Selector.SelectedValueProperty);
         }
 
         private void PART_PopupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1373,6 +1397,7 @@ namespace MahApps.Metro.Controls
 
             if (this.PART_PopupListBox is not null)
             {
+                this.SyncPopupSelectionFromSelectedItems();
                 this.PART_PopupListBox.Focus();
 
                 if (this.PART_PopupListBox.Items.Count == 0)
