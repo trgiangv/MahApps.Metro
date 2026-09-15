@@ -153,6 +153,14 @@ namespace MahApps.Metro.Controls
             /// </summary>
             private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
             {
+                if (this.selector is MultiSelectionComboBox multiSelectionComboBox
+                    && !multiSelectionComboBox.IsRaisingStoreSelectionChanged)
+                {
+                    // ComboBox.SelectionChanged is single-select. The store is SelectedItems;
+                    // only propagate when the control raised that from the store.
+                    return;
+                }
+
                 var notifyCollection = this.collection as INotifyCollectionChanged;
                 if (notifyCollection is not null)
                 {
@@ -175,7 +183,10 @@ namespace MahApps.Metro.Controls
                     {
                         foreach (var newItem in addedItems)
                         {
-                            this.collection.Add(newItem);
+                            if (!this.collection.Contains(newItem))
+                            {
+                                this.collection.Add(newItem);
+                            }
                         }
                     }
                 }

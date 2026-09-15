@@ -60,7 +60,15 @@ namespace MahApps.Metro.Controls
                                        Source = this
                                    };
 
-            base.OnSelectionChanged(selectionChanged);
+            this.IsRaisingStoreSelectionChanged = true;
+            try
+            {
+                base.OnSelectionChanged(selectionChanged);
+            }
+            finally
+            {
+                this.IsRaisingStoreSelectionChanged = false;
+            }
 
             this.UpdateDisplaySelectedItems();
             this.UpdateEditableText();
@@ -71,7 +79,7 @@ namespace MahApps.Metro.Controls
         //-------------------------------------------------------------------
         //
         //  Private Members
-        // 
+        //
         //-------------------------------------------------------------------
 
         #region private Members
@@ -80,6 +88,9 @@ namespace MahApps.Metro.Controls
         private ListBox? PART_PopupListBox;
         private TextBox? PART_EditableTextBox;
         private ListBox? PART_SelectedItemsPresenter;
+        private bool updatingPopupView;
+
+        internal bool IsRaisingStoreSelectionChanged { get; private set; }
 
         private bool isUserdefinedTextInputPending;
         private bool isTextChanging; // This flag indicates if the text is changed by us, so we don't want to re-fire the TextChangedEvent.
@@ -97,7 +108,7 @@ namespace MahApps.Metro.Controls
         //-------------------------------------------------------------------
         //
         //  Public Properties
-        // 
+        //
         //-------------------------------------------------------------------
 
         #region Public Properties
@@ -364,7 +375,7 @@ namespace MahApps.Metro.Controls
                                           new PropertyMetadata(null));
 
         /// <summary>
-        /// Gets or Sets a parser-class that implements <see cref="IParseStringToObject"/> 
+        /// Gets or Sets a parser-class that implements <see cref="IParseStringToObject"/>
         /// </summary>
         public IParseStringToObject? StringToObjectParser
         {
@@ -509,8 +520,8 @@ namespace MahApps.Metro.Controls
 
         /// <summary>
         /// Gets or Sets the delay in milliseconds to wait before the selection is updated during text input.
-        /// If this value is -1 the selection will not be updated during text input. 
-        /// Note: You also need to set <see cref="ObjectToStringComparer"/> to get this to work. 
+        /// If this value is -1 the selection will not be updated during text input.
+        /// Note: You also need to set <see cref="ObjectToStringComparer"/> to get this to work.
         /// </summary>
         public int SelectItemsFromTextInputDelay
         {
@@ -526,7 +537,7 @@ namespace MahApps.Metro.Controls
                                           new PropertyMetadata(BooleanBoxes.TrueBox));
 
         /// <summary>
-        /// Gets or Sets if the user can select items from the keyboard, e.g. with the ▲ ▼ Keys. 
+        /// Gets or Sets if the user can select items from the keyboard, e.g. with the ▲ ▼ Keys.
         /// This property is only applied when the <see cref="System.Windows.Controls.SelectionMode"/> is <see cref="System.Windows.Controls.SelectionMode.Single"/>
         /// </summary>
         public bool InterceptKeyboardSelection
@@ -543,7 +554,7 @@ namespace MahApps.Metro.Controls
                                           new PropertyMetadata(BooleanBoxes.TrueBox));
 
         /// <summary>
-        /// Gets or Sets if the user can select items by mouse wheel. 
+        /// Gets or Sets if the user can select items by mouse wheel.
         /// This property is only applied when the <see cref="System.Windows.Controls.SelectionMode"/> is <see cref="System.Windows.Controls.SelectionMode.Single"/>
         /// </summary>
         public bool InterceptMouseWheelSelection
@@ -553,7 +564,7 @@ namespace MahApps.Metro.Controls
         }
 
         /// <summary>
-        /// Resets the custom Text to the selected Items text 
+        /// Resets the custom Text to the selected Items text
         /// </summary>
         public void ResetEditableText(bool forceUpdate = false)
         {
@@ -757,7 +768,7 @@ namespace MahApps.Metro.Controls
         /// <summary>
         /// Updates the Text of the editable TextBox.
         /// Sets the custom Text if any otherwise the concatenated string.
-        /// </summary> 
+        /// </summary>
         private void UpdateEditableText(bool forceUpdate = false)
         {
             if (this.PART_EditableTextBox is null || (this.PART_EditableTextBox.IsKeyboardFocused && !forceUpdate))
@@ -867,7 +878,7 @@ namespace MahApps.Metro.Controls
                 return;
             }
 
-            // We want to do a text reset or add items only if we don't need to wait for more input. 
+            // We want to do a text reset or add items only if we don't need to wait for more input.
             this.shouldDoTextReset = millisecondsToWait == 0;
             this.shouldAddItems = millisecondsToWait == 0;
 
@@ -897,7 +908,7 @@ namespace MahApps.Metro.Controls
         {
             this.updateSelectedItemsFromTextTimer?.Stop();
 
-            // We clear the selection if there is no text available. 
+            // We clear the selection if there is no text available.
             if (string.IsNullOrEmpty(this.Text))
             {
                 switch (this.SelectionMode)
@@ -939,7 +950,7 @@ namespace MahApps.Metro.Controls
 
                     if (!foundItem)
                     {
-                        // We try to add a new item. If we were able to do so we need to update the text as it may differ. 
+                        // We try to add a new item. If we were able to do so we need to update the text as it may differ.
                         if (this.shouldAddItems && this.TryAddObjectFromString(this.Text, out var result))
                         {
                             this.SetCurrentValue(SelectedItemProperty, result);
@@ -1181,6 +1192,7 @@ namespace MahApps.Metro.Controls
 
         public override void OnApplyTemplate()
         {
+            this.UnhookPopup();
             this.StopListeningForSelectionChanges();
 
             base.OnApplyTemplate();
@@ -1206,88 +1218,176 @@ namespace MahApps.Metro.Controls
 
             if (this.PART_PopupListBox is not null)
             {
+                this.ApplyPopupSingleSelectionBindingsForSingleSelection();
+                this.HookPopup();
                 this.SyncPopupSelectionFromSelectedItems();
-
-                //this.BeginInvoke(() =>
-                //    {
-                //        this.PART_PopupListBox.SelectionChanged += this.PART_PopupListBox_SelectionChanged;
-                //        this.SyncSelectedItems(this.SelectedItems, this.PART_PopupListBox.SelectedItems, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-                //        this.PART_PopupListBox.SelectionChanged -= this.PART_PopupListBox_SelectionChanged;
-                //    }, DispatcherPriority.DataBind);
             }
+
+            this.StartListeningForSelectionChanges();
 
             // Do update the text and selection
             this.UpdateDisplaySelectedItems();
             this.UpdateEditableText(true);
         }
 
-        private void SyncPopupSelectionFromSelectedItems()
+        private void HookPopup()
         {
-            if (this.PART_PopupListBox is null)
+            if (this.PART_PopupListBox is not null)
             {
-                return;
+                this.PART_PopupListBox.SelectionChanged -= this.OnPopupSelectionChanged;
+                this.PART_PopupListBox.SelectionChanged += this.OnPopupSelectionChanged;
             }
 
-            this.ClearPopupSingleSelectionBindingsForMultiSelection();
-
-            this.PART_PopupListBox.SelectionChanged += this.PART_PopupListBox_SelectionChanged;
-            this.SyncSelectedItems(this.SelectedItems, this.PART_PopupListBox.SelectedItems, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            this.PART_PopupListBox.SelectionChanged -= this.PART_PopupListBox_SelectionChanged;
+            if (this.PART_Popup is not null)
+            {
+                this.PART_Popup.Opened -= this.OnPopupOpened;
+                this.PART_Popup.Opened += this.OnPopupOpened;
+            }
         }
 
-        private void ClearPopupSingleSelectionBindingsForMultiSelection()
+        private void UnhookPopup()
+        {
+            if (this.PART_Popup is not null)
+            {
+                this.PART_Popup.Opened -= this.OnPopupOpened;
+            }
+
+            if (this.PART_PopupListBox is not null)
+            {
+                this.PART_PopupListBox.SelectionChanged -= this.OnPopupSelectionChanged;
+            }
+        }
+
+        private void OnPopupOpened(object? sender, EventArgs e)
+        {
+            this.SyncPopupSelectionFromSelectedItems();
+        }
+
+        private void SyncPopupSelectionFromSelectedItems()
         {
             if (this.PART_PopupListBox is null || this.SelectionMode == SelectionMode.Single)
             {
                 return;
             }
 
-            BindingOperations.ClearBinding(this.PART_PopupListBox, Selector.SelectedIndexProperty);
-            BindingOperations.ClearBinding(this.PART_PopupListBox, Selector.SelectedItemProperty);
-            BindingOperations.ClearBinding(this.PART_PopupListBox, Selector.SelectedValueProperty);
+            this.updatingPopupView = true;
+            try
+            {
+                var popupSelection = this.PART_PopupListBox.SelectedItems;
+                var store = this.SelectedItems;
+                if (store is null)
+                {
+                    popupSelection.Clear();
+                    return;
+                }
+
+                for (var i = popupSelection.Count - 1; i >= 0; i--)
+                {
+                    if (!store.Contains(popupSelection[i]))
+                    {
+                        popupSelection.RemoveAt(i);
+                    }
+                }
+
+                foreach (var item in store)
+                {
+                    if (this.PART_PopupListBox.Items.Contains(item) && !popupSelection.Contains(item))
+                    {
+                        popupSelection.Add(item);
+                    }
+                }
+            }
+            finally
+            {
+                this.updatingPopupView = false;
+            }
         }
 
-        private void PART_PopupListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnPopupSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
-            if (ReferenceEquals(e.OriginalSource, this.PART_PopupListBox))
+            if (this.updatingPopupView || this.PART_PopupListBox is null || this.SelectionMode == SelectionMode.Single)
             {
-                e.Handled = true;
+                return;
             }
+
+            var store = this.SelectedItems;
+            if (store is null)
+            {
+                return;
+            }
+
+            this.updatingPopupView = true;
+            try
+            {
+                foreach (var item in e.RemovedItems)
+                {
+                    while (store.Contains(item))
+                    {
+                        store.Remove(item);
+                    }
+                }
+
+                foreach (var item in e.AddedItems)
+                {
+                    if (!store.Contains(item))
+                    {
+                        store.Add(item);
+                    }
+                }
+            }
+            finally
+            {
+                this.updatingPopupView = false;
+            }
+
+            this.SyncPopupSelectionFromSelectedItems();
+        }
+
+        private void ApplyPopupSingleSelectionBindingsForSingleSelection()
+        {
+            if (this.PART_PopupListBox is null || this.SelectionMode != SelectionMode.Single)
+            {
+                return;
+            }
+
+            this.PART_PopupListBox.SetBinding(
+                Selector.SelectedIndexProperty,
+                new Binding(nameof(SelectedIndex))
+                {
+                    Source = this,
+                    Mode = BindingMode.TwoWay,
+                });
+            this.PART_PopupListBox.SetBinding(
+                Selector.SelectedItemProperty,
+                new Binding(nameof(SelectedItem))
+                {
+                    Source = this,
+                    Mode = BindingMode.TwoWay,
+                });
+            this.PART_PopupListBox.SetBinding(
+                Selector.SelectedValueProperty,
+                new Binding(nameof(SelectedValue))
+                {
+                    Source = this,
+                    Mode = BindingMode.TwoWay,
+                });
         }
 
         private void StartListeningForSelectionChanges()
         {
-            if (this.PART_PopupListBox?.SelectedItems is INotifyCollectionChanged selectedItemsCollection)
-            {
-                selectedItemsCollection.CollectionChanged += this.PART_PopupListBox_SelectedItems_CollectionChanged;
-            }
-
             if (this.SelectedItems is INotifyCollectionChanged selectedItemsImpl)
             {
+                selectedItemsImpl.CollectionChanged -= this.SelectedItemsImpl_CollectionChanged;
                 selectedItemsImpl.CollectionChanged += this.SelectedItemsImpl_CollectionChanged;
             }
         }
 
         private void StopListeningForSelectionChanges()
         {
-            if (this.PART_PopupListBox?.SelectedItems is INotifyCollectionChanged selectedItemsCollection)
-            {
-                selectedItemsCollection.CollectionChanged -= this.PART_PopupListBox_SelectedItems_CollectionChanged;
-            }
-
             if (this.SelectedItems is INotifyCollectionChanged selectedItemsImpl)
             {
                 selectedItemsImpl.CollectionChanged -= this.SelectedItemsImpl_CollectionChanged;
             }
-        }
-
-#if NET5_0_OR_GREATER
-        private void PART_PopupListBox_SelectedItems_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-#else
-        private void PART_PopupListBox_SelectedItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-#endif
-        {
-            this.SyncSelectedItems(this.PART_PopupListBox?.SelectedItems, this.SelectedItems, e);
         }
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
@@ -1304,7 +1404,7 @@ namespace MahApps.Metro.Controls
 
             if (this.PART_PopupListBox is not null)
             {
-                // If we have the ItemsSource set, we need to exit here. 
+                // If we have the ItemsSource set, we need to exit here.
                 if (((this.PART_PopupListBox.Items as IList)?.IsReadOnly ?? false) || BindingOperations.IsDataBound(this.PART_PopupListBox, ItemsSourceProperty))
                 {
                     return;
@@ -1328,7 +1428,7 @@ namespace MahApps.Metro.Controls
                 return;
             }
 
-            // If we have the ItemsSource set, we need to exit here. 
+            // If we have the ItemsSource set, we need to exit here.
             if (((this.PART_PopupListBox?.Items as IList)?.IsReadOnly ?? false) || BindingOperations.IsDataBound(this, ItemsSourceProperty))
             {
                 return;
@@ -1535,7 +1635,7 @@ namespace MahApps.Metro.Controls
                 }
             }
 
-            // The event is handled if the drop down is not open. 
+            // The event is handled if the drop down is not open.
             e.Handled = !this.IsDropDownOpen;
             base.OnPreviewMouseWheel(e);
         }
@@ -1883,7 +1983,10 @@ namespace MahApps.Metro.Controls
         private void SelectedItemsImpl_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 #endif
         {
-            this.SyncSelectedItems(sender as IList, this.PART_PopupListBox?.SelectedItems, e);
+            if (!this.updatingPopupView)
+            {
+                this.SyncPopupSelectionFromSelectedItems();
+            }
 
             switch (e.Action)
             {
@@ -1914,111 +2017,6 @@ namespace MahApps.Metro.Controls
             }
         }
 
-        private void SyncSelectedItems(IList? sourceCollection, IList? targetCollection, NotifyCollectionChangedEventArgs e)
-        {
-            if (sourceCollection is null || targetCollection is null || !this.IsInitialized)
-            {
-                return;
-            }
-
-            this.StopListeningForSelectionChanges();
-
-            try
-            {
-                switch (e.Action)
-                {
-                    case NotifyCollectionChangedAction.Add:
-                        if (e.NewItems is not null)
-                        {
-                            foreach (var item in e.NewItems)
-                            {
-                                targetCollection.Add(item);
-                            }
-                        }
-
-                        break;
-                    case NotifyCollectionChangedAction.Remove:
-                        if (e.OldItems is not null)
-                        {
-                            foreach (var item in e.OldItems)
-                            {
-                                targetCollection.Remove(item);
-                            }
-                        }
-
-                        break;
-                    case NotifyCollectionChangedAction.Replace:
-                        if (e.NewItems is not null)
-                        {
-                            foreach (var item in e.NewItems)
-                            {
-                                targetCollection.Add(item);
-                            }
-                        }
-
-                        if (e.OldItems is not null)
-                        {
-                            foreach (var item in e.OldItems)
-                            {
-                                targetCollection.Remove(item);
-                            }
-                        }
-
-                        break;
-                    case NotifyCollectionChangedAction.Move:
-                        if (e.OldItems is not null)
-                        {
-                            var itemCount = e.OldItems.Count;
-
-                            // for the number of items being removed, remove the item from the Old Starting Index
-                            // (this will cause following items to be shifted down to fill the hole).
-                            for (var i = 0; i < itemCount; i++)
-                            {
-                                targetCollection.RemoveAt(e.OldStartingIndex);
-                            }
-                        }
-
-                        if (e.NewItems is not null)
-                        {
-                            var itemCount = e.NewItems.Count;
-
-                            for (var i = 0; i < itemCount; i++)
-                            {
-                                var insertionPoint = e.NewStartingIndex + i;
-
-                                if (insertionPoint > targetCollection.Count)
-                                {
-                                    targetCollection.Add(e.NewItems[i]);
-                                }
-                                else
-                                {
-                                    targetCollection.Insert(insertionPoint, e.NewItems[i]);
-                                }
-                            }
-                        }
-
-                        break;
-                    case NotifyCollectionChangedAction.Reset:
-                        targetCollection.Clear();
-
-                        foreach (var item in sourceCollection)
-                        {
-                            targetCollection.Add(item);
-                        }
-
-                        break;
-                }
-
-                this.UpdateDisplaySelectedItems();
-                this.UpdateEditableText();
-                this.UpdateHasCustomText(null);
-            }
-            finally
-            {
-                this.StartListeningForSelectionChanges();
-            }
-        }
-
         private void PART_EditableTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             this.SelectItemsFromText(0);
@@ -2033,7 +2031,7 @@ namespace MahApps.Metro.Controls
 
         private void PART_SelectedItemsPresenter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // We don't want the SelectedItems to be selectable. So anytime the selection will be changed we will reset it. 
+            // We don't want the SelectedItems to be selectable. So anytime the selection will be changed we will reset it.
             this.PART_SelectedItemsPresenter?.SetCurrentValue(SelectedItemProperty, null);
         }
 
